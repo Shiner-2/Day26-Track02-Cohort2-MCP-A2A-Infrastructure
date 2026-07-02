@@ -1,4 +1,4 @@
-"""Semantic routing tool — gợi ý specialist cho orchestrator (capstone)."""
+﻿"""Semantic routing tool — gợi ý specialist cho orchestrator (capstone)."""
 
 from __future__ import annotations
 
@@ -12,8 +12,8 @@ _DEFAULT_AGENTS = [
     ),
     AgentCapability(
         name="database_agent",
-        description="SQL metrics phân tích database truy vấn SELECT",
-        tags=["sql", "metrics", "database"],
+        description="SQL metrics database SELECT agent_metrics latency average avg_latency_ms",
+        tags=["sql", "select", "metrics", "database", "agent_metrics", "latency", "average"],
     ),
     AgentCapability(
         name="synthesis_agent",

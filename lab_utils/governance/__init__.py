@@ -1,9 +1,5 @@
 """Data governance cho kết nối MCP và A2A."""
 
-from lab_utils.governance.adk_callbacks import (
-    governance_before_agent_callback,
-    governance_before_tool_callback,
-)
 from lab_utils.governance.audit import AuditLogger
 from lab_utils.governance.guard import GovernanceGuard, get_guard
 from lab_utils.governance.models import (
@@ -13,6 +9,20 @@ from lab_utils.governance.models import (
     GovernanceVerdict,
 )
 from lab_utils.governance.rate_limit import RateLimiter
+
+
+def governance_before_agent_callback(*args, **kwargs):
+    """Lazy-load ADK callback so policy checks work before google-adk is installed."""
+    from lab_utils.governance.adk_callbacks import governance_before_agent_callback as callback
+
+    return callback(*args, **kwargs)
+
+
+def governance_before_tool_callback(*args, **kwargs):
+    """Lazy-load ADK callback so policy checks work before google-adk is installed."""
+    from lab_utils.governance.adk_callbacks import governance_before_tool_callback as callback
+
+    return callback(*args, **kwargs)
 
 __all__ = [
     "AuditEntry",
